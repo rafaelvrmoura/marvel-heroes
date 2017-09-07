@@ -8,6 +8,10 @@
 
 import Foundation
 
-struct Comic {
+struct Comic: JSONSerializable {
     // TODO: Add properties and methods
+    
+    init(with json: [String : Any]) {
+        // TODO: init implementation
+    }
 }
