@@ -12,6 +12,22 @@
 		160DA88E1F61FB2900A84312 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B41F60C9D500C22D54 /* Hero.swift */; };
 		162E65181F60E6B600D52460 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65171F60E6B600D52460 /* HeroCell.swift */; };
 		162E651A1F60EB3500D52460 /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65191F60EB3500D52460 /* MarvelAPI.swift */; };
+		165036151F62C272007CA247 /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036141F62C272007CA247 /* HeroDAO.swift */; };
+		165036181F62E693007CA247 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B61F60C9E200C22D54 /* MarvelResponse.swift */; };
+		165036191F62E693007CA247 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B61F60C9E200C22D54 /* MarvelResponse.swift */; };
+		1650361A1F62E696007CA247 /* MarvelThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B81F60CB9D00C22D54 /* MarvelThumbnail.swift */; };
+		1650361B1F62E697007CA247 /* MarvelThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B81F60CB9D00C22D54 /* MarvelThumbnail.swift */; };
+		1650361C1F62E6A1007CA247 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BA1F60D09C00C22D54 /* Comic.swift */; };
+		1650361D1F62E6A2007CA247 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BA1F60D09C00C22D54 /* Comic.swift */; };
+		1650361E1F62E6A4007CA247 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Storie.swift */; };
+		1650361F1F62E6A4007CA247 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Storie.swift */; };
+		165036201F62E6A7007CA247 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BE1F60D0B200C22D54 /* Event.swift */; };
+		165036211F62E6A7007CA247 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BE1F60D0B200C22D54 /* Event.swift */; };
+		165036221F62E6AA007CA247 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375C01F60D0BF00C22D54 /* Serie.swift */; };
+		165036231F62E6AA007CA247 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375C01F60D0BF00C22D54 /* Serie.swift */; };
+		165036271F62E969007CA247 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036261F62E969007CA247 /* String+MD5.swift */; };
+		165036281F633919007CA247 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036261F62E969007CA247 /* String+MD5.swift */; };
+		165036291F63391A007CA247 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036261F62E969007CA247 /* String+MD5.swift */; };
 		16A3757B1F60BD5700C22D54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A3757A1F60BD5700C22D54 /* AppDelegate.swift */; };
 		16A375801F60BD5700C22D54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A3757E1F60BD5700C22D54 /* Main.storyboard */; };
 		16A375831F60BD5700C22D54 /* Marvel_Heroes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16A375811F60BD5700C22D54 /* Marvel_Heroes.xcdatamodeld */; };
@@ -55,6 +71,8 @@
 		05743ADC685B254F0445030B /* Pods-Marvel Heroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel Heroes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel Heroes/Pods-Marvel Heroes.debug.xcconfig"; sourceTree = "<group>"; };
 		162E65171F60E6B600D52460 /* HeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
 		162E65191F60EB3500D52460 /* MarvelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
+		165036141F62C272007CA247 /* HeroDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
+		165036261F62E969007CA247 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		16A375771F60BD5700C22D54 /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A3757A1F60BD5700C22D54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A3757F1F60BD5700C22D54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +137,8 @@
 		160DA88C1F61F2C300A84312 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				165036141F62C272007CA247 /* HeroDAO.swift */,
+				165036261F62E969007CA247 /* String+MD5.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -148,12 +168,13 @@
 		16A375791F60BD5700C22D54 /* Marvel Heroes */ = {
 			isa = PBXGroup;
 			children = (
-				160DA88C1F61F2C300A84312 /* Utils */,
 				16A3757A1F60BD5700C22D54 /* AppDelegate.swift */,
 				16ED69061F61BEC800F946AE /* Marvel Heroes-Bridging-Header.h */,
+				160DA88C1F61F2C300A84312 /* Utils */,
 				16A375B01F60BDED00C22D54 /* Networking */,
-				16A375AF1F60BDE100C22D54 /* Model */,
-				16A375AE1F60BDD700C22D54 /* View */,
+				16A375AF1F60BDE100C22D54 /* Models */,
+				16A375AE1F60BDD700C22D54 /* Views */,
+				16A375B21F60BE0A00C22D54 /* Controllers */,
 				16A375AB1F60BD6900C22D54 /* Resources */,
 				16A375861F60BD5700C22D54 /* LaunchScreen.storyboard */,
 				16A375891F60BD5700C22D54 /* Info.plist */,
@@ -189,17 +210,16 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		16A375AE1F60BDD700C22D54 /* View */ = {
+		16A375AE1F60BDD700C22D54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				16A375B31F60BE1F00C22D54 /* Interface */,
-				16A375B21F60BE0A00C22D54 /* Controllers */,
+				16A3757E1F60BD5700C22D54 /* Main.storyboard */,
 				16A375B11F60BE0100C22D54 /* Custom Views */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		16A375AF1F60BDE100C22D54 /* Model */ = {
+		16A375AF1F60BDE100C22D54 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				16A375B61F60C9E200C22D54 /* MarvelResponse.swift */,
@@ -210,7 +230,7 @@
 				16A375BE1F60D0B200C22D54 /* Event.swift */,
 				16A375C01F60D0BF00C22D54 /* Serie.swift */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		16A375B01F60BDED00C22D54 /* Networking */ = {
@@ -235,14 +255,6 @@
 				16ED69041F60F4D800F946AE /* ListingHeroesController.swift */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		16A375B31F60BE1F00C22D54 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				16A3757E1F60BD5700C22D54 /* Main.storyboard */,
-			);
-			name = Interface;
 			sourceTree = "<group>";
 		};
 		38C2BAC083C7DF8D10370E57 /* Pods */ = {
@@ -591,11 +603,13 @@
 				162E651A1F60EB3500D52460 /* MarvelAPI.swift in Sources */,
 				16A375831F60BD5700C22D54 /* Marvel_Heroes.xcdatamodeld in Sources */,
 				16A375BF1F60D0B200C22D54 /* Event.swift in Sources */,
+				165036151F62C272007CA247 /* HeroDAO.swift in Sources */,
 				16A375BB1F60D09C00C22D54 /* Comic.swift in Sources */,
 				16ED69051F60F4D800F946AE /* ListingHeroesController.swift in Sources */,
 				16A375C11F60D0BF00C22D54 /* Serie.swift in Sources */,
 				16A3757B1F60BD5700C22D54 /* AppDelegate.swift in Sources */,
 				16A375B71F60C9E200C22D54 /* MarvelResponse.swift in Sources */,
+				165036271F62E969007CA247 /* String+MD5.swift in Sources */,
 				16A375BD1F60D0A800C22D54 /* Storie.swift in Sources */,
 				162E65181F60E6B600D52460 /* HeroCell.swift in Sources */,
 				16A375B91F60CB9D00C22D54 /* MarvelThumbnail.swift in Sources */,
@@ -607,7 +621,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				165036201F62E6A7007CA247 /* Event.swift in Sources */,
+				1650361E1F62E6A4007CA247 /* Storie.swift in Sources */,
 				16A375931F60BD5700C22D54 /* Marvel_HeroesTests.swift in Sources */,
+				1650361C1F62E6A1007CA247 /* Comic.swift in Sources */,
+				1650361A1F62E696007CA247 /* MarvelThumbnail.swift in Sources */,
+				165036221F62E6AA007CA247 /* Serie.swift in Sources */,
+				165036181F62E693007CA247 /* MarvelResponse.swift in Sources */,
+				165036281F633919007CA247 /* String+MD5.swift in Sources */,
 				16ED69021F60F42300F946AE /* MarvelAPI.swift in Sources */,
 				160DA88D1F61FB2800A84312 /* Hero.swift in Sources */,
 			);
@@ -617,7 +638,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				165036211F62E6A7007CA247 /* Event.swift in Sources */,
+				1650361F1F62E6A4007CA247 /* Storie.swift in Sources */,
 				16A3759E1F60BD5700C22D54 /* Marvel_HeroesUITests.swift in Sources */,
+				1650361D1F62E6A2007CA247 /* Comic.swift in Sources */,
+				1650361B1F62E697007CA247 /* MarvelThumbnail.swift in Sources */,
+				165036231F62E6AA007CA247 /* Serie.swift in Sources */,
+				165036191F62E693007CA247 /* MarvelResponse.swift in Sources */,
+				165036291F63391A007CA247 /* String+MD5.swift in Sources */,
 				16ED69031F60F42400F946AE /* MarvelAPI.swift in Sources */,
 				160DA88E1F61FB2900A84312 /* Hero.swift in Sources */,
 			);
@@ -801,6 +829,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rafael.moura.Marvel-HeroesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Marvel Heroes/Marvel Heroes-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel Heroes.app/Marvel Heroes";
 			};
@@ -817,6 +846,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rafael.moura.Marvel-HeroesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Marvel Heroes/Marvel Heroes-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel Heroes.app/Marvel Heroes";
 			};
@@ -832,6 +862,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rafael.moura.Marvel-HeroesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Marvel Heroes/Marvel Heroes-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Marvel Heroes";
 			};
@@ -847,6 +878,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rafael.moura.Marvel-HeroesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Marvel Heroes/Marvel Heroes-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Marvel Heroes";
 			};

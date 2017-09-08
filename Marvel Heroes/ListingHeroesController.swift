@@ -93,18 +93,21 @@ class ListingHeroesController: UICollectionViewController {
         
         let hero = heroes[indexPath.item]
         cell.heroNameLabel.text = hero.name
-        cell.favoriteButton.setImage(hero.isFavorite ? favoriteImage : nonFavoriteImage, for: .normal)
         cell.delegate = self
+        
         
         if let heroPictureURL = hero.thumbnail?.url(with: .portraitXLarge) {
             cell.heroThumbnailView.kf.setImage(with: heroPictureURL)
         }
         
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let heroDAO = HeroDAO(with: context)
+        
+        cell.favoriteButton.setImage(try? heroDAO.isFavorite(hero) ? favoriteImage : nonFavoriteImage, for: .normal)
+        
         return cell
     }
 
-    // MARK: - UICollectionViewDelegate
-    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind == UICollectionElementKindSectionFooter {
@@ -116,6 +119,9 @@ class ListingHeroesController: UICollectionViewController {
         
         return UICollectionReusableView(frame: .zero)
     }
+    
+    // MARK: - UICollectionViewDelegate
+    
 }
 
 // MARK: - HeroCell Delegate implementation
@@ -126,9 +132,24 @@ extension ListingHeroesController: HeroCellDelegate {
         
         guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
         
-        var hero = heroes[indexPath.item]
-        hero.isFavorite = !hero.isFavorite
-        cell.favoriteButton.setImage(hero.isFavorite ? favoriteImage : nonFavoriteImage, for: .normal)
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let heroDAO = HeroDAO(with: context)
+        
+        let hero = heroes[indexPath.item]
+        
+        do {
+            
+            if try heroDAO.isFavorite(hero) {
+                try heroDAO.unFavorite(hero)
+                cell.favoriteButton.setImage(nonFavoriteImage, for: .normal)
+            }else {
+                try heroDAO.favorite(hero)
+                cell.favoriteButton.setImage(favoriteImage, for: .normal)
+            }
+            
+        } catch {
+            // TODO: Handle error
+        }
     }
 }
 
