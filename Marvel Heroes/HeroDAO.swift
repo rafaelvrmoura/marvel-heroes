@@ -61,4 +61,42 @@ class HeroDAO: NSObject {
         return result
     }
     
+    func fetch(from offset: Int, to limit: Int) throws -> [Hero]? {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteHero")
+        request.fetchOffset = offset
+        request.fetchLimit = limit
+        
+        let results = try context.fetch(request) as? [NSManagedObject]
+        
+        return results?.map{ Hero(with: $0) }
+    }
 }
+
+
+// MARK: Model extensions to init with managed objects
+
+extension Hero {
+    init(with managedObject: NSManagedObject) {
+        self.id = managedObject.value(forKey: "id") as? Int
+        self.name = managedObject.value(forKey: "name") as? String
+        self.description = managedObject.value(forKey: "characterDescription") as? String
+        
+        if let thumbnailObject = managedObject.value(forKey: "thumbnail") as? NSManagedObject {
+            self.thumbnail = MarvelThumbnail(with: thumbnailObject)
+        }else {
+            self.thumbnail = nil
+        }
+    }
+}
+
+extension MarvelThumbnail {
+    
+    init(with managedObject: NSManagedObject) {
+        self.path = managedObject.value(forKey: "path") as? String
+        self.pictureExtension = managedObject.value(forKey: "pictureExtension") as? String
+    }
+}
+
+
+

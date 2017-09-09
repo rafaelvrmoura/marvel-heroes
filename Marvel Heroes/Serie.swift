@@ -8,9 +8,12 @@
 
 import Foundation
 
-struct Serie: JSONSerializable {
+struct Serie {
     // TODO: Add properties and methods
-    
+}
+
+
+extension Serie: JSONSerializable {
     init(with json: [String : Any]) {
         // TODO: init implementation
     }

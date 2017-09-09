@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u3c-xw-R6d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YeF-Yn-Zcd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -112,137 +112,18 @@
                             <outlet property="delegate" destination="G7P-Ou-ixR" id="uUt-vo-YxB"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="MARVEL" id="p9r-VN-6JO"/>
+                    <navigationItem key="navigationItem" title="MARVEL" id="p9r-VN-6JO">
+                        <barButtonItem key="rightBarButtonItem" title="Favorites" id="Zi6-Zy-DXG">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="toggleDisplayingPrefferences:" destination="G7P-Ou-ixR" id="O2N-zy-eDX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Un4-LO-JSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1386.4000000000001" y="-644.52773613193403"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="1Zz-xQ-7x7">
-            <objects>
-                <tabBarController id="u3c-xw-R6d" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="n1Y-sb-8za">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="YeF-Yn-Zcd" kind="relationship" relationship="viewControllers" id="mbu-k5-Lfs"/>
-                        <segue destination="SYD-Fw-XyU" kind="relationship" relationship="viewControllers" id="j4H-0N-elO"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E2z-QZ-LPz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-382" y="-393"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="BcA-ye-1gb">
-            <objects>
-                <navigationController id="SYD-Fw-XyU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="SvQ-d6-mGw"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ae3-9c-VZw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.92941176469999998" green="0.1019607843" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="7fe-HL-5zO" kind="relationship" relationship="rootViewController" id="4CE-Vc-Kxz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ba-La-yj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="598" y="85"/>
-        </scene>
-        <!--Favorites-->
-        <scene sceneID="TNk-8u-Htp">
-            <objects>
-                <collectionViewController id="7fe-HL-5zO" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="GcJ-T2-ls3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="UvN-4Z-112">
-                            <size key="itemSize" width="170" height="270"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="50" height="40"/>
-                            <inset key="sectionInset" minX="8" minY="15" maxX="8" maxY="10"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeroCell" id="5qt-UG-mCm" customClass="HeroCell" customModule="Marvel_Heroes" customModuleProvider="target">
-                                <rect key="frame" x="8" y="15" width="170" height="270"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="170" height="270"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UaJ-g1-FiS">
-                                            <rect key="frame" x="10" y="0.0" width="150" height="225"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="225" id="MLz-D7-Lbs"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hero name with two lines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8q-RD-599">
-                                            <rect key="frame" x="0.0" y="225.5" width="170" height="40.5"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-wW-GNi">
-                                            <rect key="frame" x="119" y="2" width="39" height="37"/>
-                                            <state key="normal" image="non_favorite"/>
-                                            <connections>
-                                                <action selector="toggleFavoriteStatus:" destination="5qt-UG-mCm" eventType="touchUpInside" id="ePn-AZ-Wji"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="5D7-wW-GNi" secondAttribute="trailing" constant="4" id="07m-gv-q7X"/>
-                                    <constraint firstItem="I8q-RD-599" firstAttribute="leading" secondItem="5qt-UG-mCm" secondAttribute="leadingMargin" constant="-8" id="6bU-QN-8ee"/>
-                                    <constraint firstItem="UaJ-g1-FiS" firstAttribute="top" secondItem="5qt-UG-mCm" secondAttribute="topMargin" constant="-8" id="8jS-7a-vy6"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="I8q-RD-599" secondAttribute="bottom" constant="-4" id="9Uu-09-YJB"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="I8q-RD-599" secondAttribute="trailing" constant="-8" id="AIj-5j-Nkq"/>
-                                    <constraint firstItem="I8q-RD-599" firstAttribute="top" secondItem="UaJ-g1-FiS" secondAttribute="bottom" constant="0.5" id="CVa-WK-Nyh"/>
-                                    <constraint firstItem="UaJ-g1-FiS" firstAttribute="leading" secondItem="5qt-UG-mCm" secondAttribute="leadingMargin" constant="2" id="DVr-e0-k6v"/>
-                                    <constraint firstAttribute="topMargin" secondItem="5D7-wW-GNi" secondAttribute="top" constant="6" id="Iio-EL-eaG"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="UaJ-g1-FiS" secondAttribute="trailing" constant="2" id="NdQ-J1-u85"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="favoriteButton" destination="5D7-wW-GNi" id="PIf-OM-4ff"/>
-                                    <outlet property="heroNameLabel" destination="I8q-RD-599" id="9Y0-38-sAR"/>
-                                    <outlet property="heroThumbnailView" destination="UaJ-g1-FiS" id="ezB-mR-QJ4"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadingIndicatorView" id="eDg-Yi-bRr">
-                            <rect key="frame" x="0.0" y="295" width="375" height="40"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZTb-TB-Dox">
-                                    <rect key="frame" x="177" y="10" width="20" height="20"/>
-                                    <color key="color" red="0.92941176469999998" green="0.1019607843" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </activityIndicatorView>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="ZTb-TB-Dox" firstAttribute="centerY" secondItem="eDg-Yi-bRr" secondAttribute="centerY" id="Nr0-J2-NkN"/>
-                                <constraint firstItem="ZTb-TB-Dox" firstAttribute="centerX" secondItem="eDg-Yi-bRr" secondAttribute="centerX" id="jkt-87-wjg"/>
-                            </constraints>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="7fe-HL-5zO" id="HUx-PA-uSi"/>
-                            <outlet property="delegate" destination="7fe-HL-5zO" id="TCs-8U-mod"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Favorites" id="Eeb-AC-pEU"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4cr-3S-gya" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1386" y="84"/>
         </scene>
     </scenes>
     <resources>

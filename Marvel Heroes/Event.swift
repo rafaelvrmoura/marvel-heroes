@@ -8,9 +8,11 @@
 
 import Foundation
 
-struct Event: JSONSerializable {
+struct Event {
     // TODO: Add properties and methods
-    
+}
+
+extension Event: JSONSerializable {
     init(with json: [String : Any]) {
         // TODO: init implementation
     }

@@ -17,7 +17,7 @@ enum PictureResolution: String {
     case portraitIncredible = "portrait_incredible" // 216x324px
 }
 
-struct MarvelThumbnail: JSONSerializable {
+struct MarvelThumbnail {
     
     var path: String?
     var pictureExtension: String?
@@ -30,7 +30,9 @@ struct MarvelThumbnail: JSONSerializable {
         
         return url
     }
-    
+}
+
+extension MarvelThumbnail: JSONSerializable {
     init(with json: [String : Any]) {
         self.path = json["path"] as? String
         self.pictureExtension = json["extension"] as? String

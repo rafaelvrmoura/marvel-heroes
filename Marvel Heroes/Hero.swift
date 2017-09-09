@@ -7,19 +7,16 @@
 //
 
 import Foundation
-import CoreData
 
-struct Hero: JSONSerializable {
+struct Hero {
     
     var id: Int?
     var name: String?
     var description: String?
     var thumbnail: MarvelThumbnail?
-    
-    var comics: [Comic]?
-    var stories: [Storie]?
-    var events: [Event]?
-    var Series: [Serie]?
+}
+
+extension Hero: JSONSerializable {
     
     init(with json: [String : Any]) {
         
