@@ -4,7 +4,32 @@
         <attribute name="characterDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredComicSummary" inverseName="heroes" inverseEntity="StoredComicSummary" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredEventSummary" inverseName="heroes" inverseEntity="StoredEventSummary" syncable="YES"/>
+        <relationship name="series" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredSerieSummary" inverseName="heroes" inverseEntity="StoredSerieSummary" syncable="YES"/>
+        <relationship name="stories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredStorySummary" inverseName="heroes" inverseEntity="StoredStorySummary" syncable="YES"/>
         <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="hero" inverseEntity="Thumbnail" syncable="YES"/>
+    </entity>
+    <entity name="StoredComicSummary" representedClassName="StoredComicSummary" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resourceURI" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteHero" inverseName="comics" inverseEntity="FavoriteHero" syncable="YES"/>
+    </entity>
+    <entity name="StoredEventSummary" representedClassName="StoredEventSummary" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resourceURI" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteHero" inverseName="events" inverseEntity="FavoriteHero" syncable="YES"/>
+    </entity>
+    <entity name="StoredSerieSummary" representedClassName="StoredSerieSummary" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resourceURI" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteHero" inverseName="series" inverseEntity="FavoriteHero" syncable="YES"/>
+    </entity>
+    <entity name="StoredStorySummary" representedClassName="StoredStorySummary" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resourceURI" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="heroes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteHero" inverseName="stories" inverseEntity="FavoriteHero" syncable="YES"/>
     </entity>
     <entity name="Thumbnail" representedClassName="Thumbnail" syncable="YES" codeGenerationType="class">
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,7 +37,11 @@
         <relationship name="hero" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FavoriteHero" inverseName="thumbnail" inverseEntity="FavoriteHero" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FavoriteHero" positionX="-90" positionY="-45" width="128" height="103"/>
+        <element name="FavoriteHero" positionX="-90" positionY="-45" width="128" height="165"/>
         <element name="Thumbnail" positionX="178" positionY="-81" width="128" height="88"/>
+        <element name="StoredComicSummary" positionX="45" positionY="-27" width="128" height="90"/>
+        <element name="StoredStorySummary" positionX="54" positionY="-18" width="128" height="105"/>
+        <element name="StoredEventSummary" positionX="63" positionY="-9" width="128" height="90"/>
+        <element name="StoredSerieSummary" positionX="72" positionY="0" width="128" height="90"/>
     </elements>
 </model>

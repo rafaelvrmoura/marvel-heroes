@@ -8,30 +8,56 @@
 
 import CoreData
 
-class HeroDAO: NSObject {
-
-    private var context: NSManagedObjectContext
-    
-    init(with context: NSManagedObjectContext) {
-        self.context = context
-        super.init()
-    }
+class HeroDAO: DataAccessObject {
     
     func favorite(_ hero: Hero) throws {
-        
+        _ = try self.insert(hero)
+    }
+    
+    private func insert(_ hero: Hero) throws -> NSManagedObject{
         let heroObject = NSEntityDescription.insertNewObject(forEntityName: "FavoriteHero", into: context)
         
         let thumbnail = NSEntityDescription.insertNewObject(forEntityName: "Thumbnail", into: context)
-        
         thumbnail.setValue(hero.thumbnail?.path, forKey: "path")
         thumbnail.setValue(hero.thumbnail?.pictureExtension, forKey: "pictureExtension")
+        thumbnail.setValue(heroObject, forKey: "hero")
         
         heroObject.setValue(hero.id, forKey: "id")
         heroObject.setValue(hero.name, forKey: "name")
         heroObject.setValue(hero.description, forKey: "characterDescription")
         heroObject.setValue(thumbnail, forKey: "thumbnail")
         
+        // Insert comic summaries
+        if let comics = hero.comics {
+            let comicDAO = ComicDAO(with: context)
+            let comicObjects = try comicDAO.insert(comics, for: heroObject)
+            heroObject.setValue(NSSet(array: comicObjects), forKey: "comics")
+        }
+        
+        // Insert story summaries
+        if let stories = hero.stories {
+            let storyDAO = StoryDAO(with: context)
+            let storyObjects = try storyDAO.insert(stories, for: heroObject)
+            heroObject.setValue(NSSet(array: storyObjects), forKey: "stories")
+        }
+        
+        // Insert event summaries
+        if let events = hero.events {
+            let eventDAO = EventDAO(with: context)
+            let eventObjects = try eventDAO.insert(events, for: heroObject)
+            heroObject.setValue(NSSet(array: eventObjects), forKey: "events")
+        }
+        
+        // Insert serie summaries
+        if let series = hero.series {
+            let serieDAO = SerieDAO(with: context)
+            let serieObjects = try serieDAO.insert(series, for: heroObject)
+            heroObject.setValue(NSSet(array: serieObjects), forKey: "series")
+        }
+        
         try context.save()
+        
+        return heroObject
     }
     
     func unFavorite(_ hero: Hero) throws {
@@ -87,6 +113,30 @@ extension Hero {
         }else {
             self.thumbnail = nil
         }
+        
+        if let comicSummaries = managedObject.value(forKey: "comics") as? Set<NSManagedObject> {
+            self.comics = comicSummaries.map{ ComicSummary(with: $0) }
+        }else {
+            self.comics = nil
+        }
+        
+        if let storySummaries = managedObject.value(forKey: "stories") as? Set<NSManagedObject> {
+            self.stories = storySummaries.map{ StorySummary(with: $0) }
+        }else {
+            self.stories = nil
+        }
+        
+        if let eventSummaries = managedObject.value(forKey: "events") as? Set<NSManagedObject> {
+            self.events = eventSummaries.map{ EventSummary(with: $0) }
+        }else {
+            self.events = nil
+        }
+        
+        if let serieSummaries = managedObject.value(forKey: "series") as? Set<NSManagedObject> {
+            self.series = serieSummaries.map{ SerieSummary(with: $0) }
+        }else {
+            self.series = nil
+        }
     }
 }
 
@@ -98,5 +148,33 @@ extension MarvelThumbnail {
     }
 }
 
+extension ComicSummary {
+    init(with managedObject: NSManagedObject) {
+        self.resourceURI = managedObject.value(forKey: "resourceURI") as? String
+        self.name = managedObject.value(forKey: "name") as? String
+    }
+}
+
+extension StorySummary {
+    init(with managedObject: NSManagedObject) {
+        self.resourceURI = managedObject.value(forKey: "resourceURI") as? String
+        self.name = managedObject.value(forKey: "name") as? String
+        self.type = managedObject.value(forKey: "type") as? String
+    }
+}
+
+extension EventSummary {
+    init(with managedObject: NSManagedObject) {
+        self.resourceURI = managedObject.value(forKey: "resourceURI") as? String
+        self.name = managedObject.value(forKey: "name") as? String
+    }
+}
+
+extension SerieSummary {
+    init(with managedObject: NSManagedObject) {
+        self.resourceURI = managedObject.value(forKey: "resourceURI") as? String
+        self.name = managedObject.value(forKey: "name") as? String
+    }
+}
 
 

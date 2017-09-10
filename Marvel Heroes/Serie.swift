@@ -8,6 +8,19 @@
 
 import Foundation
 
+struct SerieSummary {
+    var resourceURI: String?
+    var name: String?
+}
+
+extension SerieSummary: JSONSerializable {
+    
+    init(with json: [String : Any]) {
+        self.resourceURI = json["resourceURI"] as? String
+        self.name = json["name"] as? String
+    }
+}
+
 struct Serie {
     // TODO: Add properties and methods
 }

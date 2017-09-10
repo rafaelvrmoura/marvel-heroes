@@ -27,6 +27,7 @@ enum DisplayMode: String {
 
 class ListingHeroesController: UICollectionViewController {
 
+    
     fileprivate let favoriteImage = #imageLiteral(resourceName: "favorite")
     fileprivate let nonFavoriteImage = #imageLiteral(resourceName: "non_favorite")
     fileprivate var isLoading = false
@@ -49,15 +50,16 @@ class ListingHeroesController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        if let heroDetailsController = segue.destination as? HeroDetailsViewController {
+            heroDetailsController.hero = sender as! Hero
+            heroDetailsController.delegate = self
+        }
     }
-    */
+ 
 
     // MARK: - Actions
     
@@ -76,6 +78,31 @@ class ListingHeroesController: UICollectionViewController {
         self.collectionView?.reloadData()
     }
     
+    fileprivate func toggleFavoriteStatusForHero(at index: Int) {
+        
+        let hero = self.hero(at: index)
+        let indexPath = IndexPath(item: index, section: 0)
+        let cell = collectionView?.cellForItem(at: indexPath) as? HeroCell
+        
+        do {
+            if try heroDAO.isFavorite(hero) {
+                try heroDAO.unFavorite(hero)
+                
+                // If displaying favorites the cell must be deleted from collectionview
+                if displayMode == .favorites {
+                    favoriteHeroes.remove(at: index)
+                    self.collectionView?.deleteItems(at: [indexPath])
+                }
+                
+            }else {
+                try heroDAO.favorite(hero)
+            }
+            
+            cell?.favoriteButton.setImage(try? heroDAO.isFavorite(hero) ? favoriteImage : nonFavoriteImage, for: .normal)
+        } catch {
+            // TODO: Handle the error
+        }
+    }
     
     // MARK: - API Fetches stack 
     fileprivate func loadHeroes(from offset: Int, limit: Int) {
@@ -111,6 +138,16 @@ class ListingHeroesController: UICollectionViewController {
         return hero
     }
     
+    fileprivate func index(for hero: Hero) -> Int {
+        
+        switch displayMode {
+        case .all:
+            return heroes.index(where: { $0.id == hero.id })!
+        case .favorites:
+            return favoriteHeroes.index(where: { $0.id == hero.id })!
+        }
+    }
+    
     private func insertCollectionViewItems(for heroes: [Hero]) {
         
         let currentNumberOfHeroes = ((displayMode == .all) ? self.heroes.count : self.favoriteHeroes.count)
@@ -123,7 +160,11 @@ class ListingHeroesController: UICollectionViewController {
     }
     
     // MARK: - UICollectionViewDelegate
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let hero = self.hero(at: indexPath.item)
+        self.performSegue(withIdentifier: "heroDetails", sender: hero)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -156,9 +197,6 @@ extension ListingHeroesController {
             cell.heroThumbnailView.kf.setImage(with: heroPictureURL)
         }
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let heroDAO = HeroDAO(with: context)
-        
         cell.favoriteButton.setImage(try? heroDAO.isFavorite(hero) ? favoriteImage : nonFavoriteImage, for: .normal)
         
         return cell
@@ -189,28 +227,19 @@ extension ListingHeroesController: HeroCellDelegate {
     func toggleFavoriteStatusForHero(at cell: HeroCell) {
         
         guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
-        
-        let hero = self.hero(at: indexPath.item)
-        
-        do {
-            if try heroDAO.isFavorite(hero) {
-                try heroDAO.unFavorite(hero)
-                cell.favoriteButton.setImage(nonFavoriteImage, for: .normal)
-                
-                // If displaying favorites the cell must be deleted from collectionview
-                if displayMode == .favorites {
-                    favoriteHeroes.remove(at: indexPath.item)
-                    self.collectionView?.deleteItems(at: [indexPath])
-                }
-                
-            }else {
-                try heroDAO.favorite(hero)
-                cell.favoriteButton.setImage(favoriteImage, for: .normal)
-            }
-            
-        } catch {
-            // TODO: Handle error
-        }
+        toggleFavoriteStatusForHero(at: indexPath.item)
     }
 }
+
+// MARK: - HeroDetailsViewController Delegate implementation
+
+extension ListingHeroesController: HeroDetailsViewControllerDelegate {
+    func detailsController(_ controller: HeroDetailsViewController, didToggleFavoriteStatusFor hero: Hero) {
+        
+        let index = self.index(for: hero)
+        toggleFavoriteStatusForHero(at: index)
+    }
+}
+
+
 

@@ -8,6 +8,18 @@
 
 import Foundation
 
+struct EventSummary {
+    var resourceURI: String?
+    var name: String?
+}
+
+extension EventSummary: JSONSerializable {
+    init(with json: [String : Any]) {
+        self.resourceURI = json["resourceURI"] as? String
+        self.name = json["name"] as? String
+    }
+}
+
 struct Event {
     // TODO: Add properties and methods
 }

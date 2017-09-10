@@ -14,6 +14,11 @@ struct Hero {
     var name: String?
     var description: String?
     var thumbnail: MarvelThumbnail?
+    
+    var comics: [ComicSummary]?
+    var stories: [StorySummary]?
+    var events: [EventSummary]?
+    var series: [SerieSummary]?
 }
 
 extension Hero: JSONSerializable {
@@ -26,6 +31,22 @@ extension Hero: JSONSerializable {
         
         if let thumbnailJSON = json["thumbnail"] as? [String: Any] {
             self.thumbnail = MarvelThumbnail(with: thumbnailJSON)
+        }
+        
+        if let comicsJSON = json["comics"] as? [String: Any] {
+            self.comics = MarvelList<ComicSummary>(with: comicsJSON).items
+        }
+        
+        if let storiesJSON = json["stories"] as? [String: Any] {
+            self.stories = MarvelList<StorySummary>(with: storiesJSON).items
+        }
+        
+        if let eventsJSON = json["events"] as? [String: Any] {
+            self.events = MarvelList<EventSummary>(with: eventsJSON).items
+        }
+        
+        if let seriesJSON = json["series"] as? [String: Any] {
+            self.series = MarvelList<SerieSummary>(with: seriesJSON).items
         }
     }
 }

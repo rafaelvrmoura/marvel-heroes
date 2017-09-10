@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		051E1C85F51D4789014C635C /* Pods_Marvel_Heroes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B454B0A56F894EF05CD7262 /* Pods_Marvel_Heroes.framework */; };
+		16086B841F65B7230023A3DE /* MarvelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B831F65B7230023A3DE /* MarvelList.swift */; };
+		16086B851F65B90A0023A3DE /* MarvelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B831F65B7230023A3DE /* MarvelList.swift */; };
+		16086B861F65B90B0023A3DE /* MarvelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B831F65B7230023A3DE /* MarvelList.swift */; };
+		16086B941F65C08D0023A3DE /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B931F65C08D0023A3DE /* DataAccessObject.swift */; };
+		16086B951F65C0A40023A3DE /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B931F65C08D0023A3DE /* DataAccessObject.swift */; };
+		16086B961F65C0A40023A3DE /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B931F65C08D0023A3DE /* DataAccessObject.swift */; };
+		16086BA01F65CB2D0023A3DE /* ComicDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B9F1F65CB2D0023A3DE /* ComicDAO.swift */; };
+		16086BA11F65CB310023A3DE /* ComicDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B9F1F65CB2D0023A3DE /* ComicDAO.swift */; };
+		16086BA21F65CB310023A3DE /* ComicDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086B9F1F65CB2D0023A3DE /* ComicDAO.swift */; };
+		16086BA41F65CD1B0023A3DE /* StoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BA31F65CD1B0023A3DE /* StoryDAO.swift */; };
+		16086BA51F65CD1D0023A3DE /* StoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BA31F65CD1B0023A3DE /* StoryDAO.swift */; };
+		16086BA61F65CD1D0023A3DE /* StoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BA31F65CD1B0023A3DE /* StoryDAO.swift */; };
+		16086BA81F65CDE20023A3DE /* EventDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BA71F65CDE20023A3DE /* EventDAO.swift */; };
+		16086BA91F65CEFB0023A3DE /* EventDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BA71F65CDE20023A3DE /* EventDAO.swift */; };
+		16086BAA1F65CEFB0023A3DE /* EventDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BA71F65CDE20023A3DE /* EventDAO.swift */; };
+		16086BAC1F65D07B0023A3DE /* SerieDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BAB1F65D07B0023A3DE /* SerieDAO.swift */; };
+		16086BAD1F65D0880023A3DE /* SerieDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BAB1F65D07B0023A3DE /* SerieDAO.swift */; };
+		16086BAE1F65D0890023A3DE /* SerieDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086BAB1F65D07B0023A3DE /* SerieDAO.swift */; };
 		160DA88D1F61FB2800A84312 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B41F60C9D500C22D54 /* Hero.swift */; };
 		160DA88E1F61FB2900A84312 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B41F60C9D500C22D54 /* Hero.swift */; };
 		160DA8901F636EEE00A84312 /* MarvelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160DA88F1F636EEE00A84312 /* MarvelProvider.swift */; };
@@ -15,6 +33,7 @@
 		160DA8961F637C2300A84312 /* MarvelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160DA88F1F636EEE00A84312 /* MarvelProvider.swift */; };
 		160DA89C1F640FB000A84312 /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036141F62C272007CA247 /* HeroDAO.swift */; };
 		160DA89D1F640FB100A84312 /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036141F62C272007CA247 /* HeroDAO.swift */; };
+		160DA8A31F647B4700A84312 /* HeroDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160DA8A21F647B4700A84312 /* HeroDetailsViewController.swift */; };
 		162E65181F60E6B600D52460 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65171F60E6B600D52460 /* HeroCell.swift */; };
 		162E651A1F60EB3500D52460 /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65191F60EB3500D52460 /* MarvelAPI.swift */; };
 		165036151F62C272007CA247 /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036141F62C272007CA247 /* HeroDAO.swift */; };
@@ -24,8 +43,8 @@
 		1650361B1F62E697007CA247 /* MarvelThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B81F60CB9D00C22D54 /* MarvelThumbnail.swift */; };
 		1650361C1F62E6A1007CA247 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BA1F60D09C00C22D54 /* Comic.swift */; };
 		1650361D1F62E6A2007CA247 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BA1F60D09C00C22D54 /* Comic.swift */; };
-		1650361E1F62E6A4007CA247 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Storie.swift */; };
-		1650361F1F62E6A4007CA247 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Storie.swift */; };
+		1650361E1F62E6A4007CA247 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Story.swift */; };
+		1650361F1F62E6A4007CA247 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Story.swift */; };
 		165036201F62E6A7007CA247 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BE1F60D0B200C22D54 /* Event.swift */; };
 		165036211F62E6A7007CA247 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BE1F60D0B200C22D54 /* Event.swift */; };
 		165036221F62E6AA007CA247 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375C01F60D0BF00C22D54 /* Serie.swift */; };
@@ -45,7 +64,7 @@
 		16A375B71F60C9E200C22D54 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B61F60C9E200C22D54 /* MarvelResponse.swift */; };
 		16A375B91F60CB9D00C22D54 /* MarvelThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375B81F60CB9D00C22D54 /* MarvelThumbnail.swift */; };
 		16A375BB1F60D09C00C22D54 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BA1F60D09C00C22D54 /* Comic.swift */; };
-		16A375BD1F60D0A800C22D54 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Storie.swift */; };
+		16A375BD1F60D0A800C22D54 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Story.swift */; };
 		16A375BF1F60D0B200C22D54 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BE1F60D0B200C22D54 /* Event.swift */; };
 		16A375C11F60D0BF00C22D54 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375C01F60D0BF00C22D54 /* Serie.swift */; };
 		16ED69021F60F42300F946AE /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65191F60EB3500D52460 /* MarvelAPI.swift */; };
@@ -74,7 +93,14 @@
 
 /* Begin PBXFileReference section */
 		05743ADC685B254F0445030B /* Pods-Marvel Heroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel Heroes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel Heroes/Pods-Marvel Heroes.debug.xcconfig"; sourceTree = "<group>"; };
+		16086B831F65B7230023A3DE /* MarvelList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelList.swift; sourceTree = "<group>"; };
+		16086B931F65C08D0023A3DE /* DataAccessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccessObject.swift; sourceTree = "<group>"; };
+		16086B9F1F65CB2D0023A3DE /* ComicDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDAO.swift; sourceTree = "<group>"; };
+		16086BA31F65CD1B0023A3DE /* StoryDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryDAO.swift; sourceTree = "<group>"; };
+		16086BA71F65CDE20023A3DE /* EventDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDAO.swift; sourceTree = "<group>"; };
+		16086BAB1F65D07B0023A3DE /* SerieDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerieDAO.swift; sourceTree = "<group>"; };
 		160DA88F1F636EEE00A84312 /* MarvelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelProvider.swift; sourceTree = "<group>"; };
+		160DA8A21F647B4700A84312 /* HeroDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewController.swift; sourceTree = "<group>"; };
 		162E65171F60E6B600D52460 /* HeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
 		162E65191F60EB3500D52460 /* MarvelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		165036141F62C272007CA247 /* HeroDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
@@ -97,7 +123,7 @@
 		16A375B61F60C9E200C22D54 /* MarvelResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
 		16A375B81F60CB9D00C22D54 /* MarvelThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelThumbnail.swift; sourceTree = "<group>"; };
 		16A375BA1F60D09C00C22D54 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
-		16A375BC1F60D0A800C22D54 /* Storie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storie.swift; sourceTree = "<group>"; };
+		16A375BC1F60D0A800C22D54 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		16A375BE1F60D0B200C22D54 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		16A375C01F60D0BF00C22D54 /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
 		16ED69041F60F4D800F946AE /* ListingHeroesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingHeroesController.swift; sourceTree = "<group>"; };
@@ -143,7 +169,12 @@
 		160DA88C1F61F2C300A84312 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				16086B931F65C08D0023A3DE /* DataAccessObject.swift */,
 				165036141F62C272007CA247 /* HeroDAO.swift */,
+				16086B9F1F65CB2D0023A3DE /* ComicDAO.swift */,
+				16086BA31F65CD1B0023A3DE /* StoryDAO.swift */,
+				16086BA71F65CDE20023A3DE /* EventDAO.swift */,
+				16086BAB1F65D07B0023A3DE /* SerieDAO.swift */,
 				165036261F62E969007CA247 /* String+MD5.swift */,
 			);
 			name = Utils;
@@ -228,10 +259,11 @@
 		16A375AF1F60BDE100C22D54 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				16086B831F65B7230023A3DE /* MarvelList.swift */,
 				16A375B81F60CB9D00C22D54 /* MarvelThumbnail.swift */,
 				16A375B41F60C9D500C22D54 /* Hero.swift */,
 				16A375BA1F60D09C00C22D54 /* Comic.swift */,
-				16A375BC1F60D0A800C22D54 /* Storie.swift */,
+				16A375BC1F60D0A800C22D54 /* Story.swift */,
 				16A375BE1F60D0B200C22D54 /* Event.swift */,
 				16A375C01F60D0BF00C22D54 /* Serie.swift */,
 			);
@@ -260,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				16ED69041F60F4D800F946AE /* ListingHeroesController.swift */,
+				160DA8A21F647B4700A84312 /* HeroDetailsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -608,18 +641,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				162E651A1F60EB3500D52460 /* MarvelAPI.swift in Sources */,
+				16086B841F65B7230023A3DE /* MarvelList.swift in Sources */,
+				16086BA41F65CD1B0023A3DE /* StoryDAO.swift in Sources */,
 				16A375831F60BD5700C22D54 /* Marvel_Heroes.xcdatamodeld in Sources */,
 				16A375BF1F60D0B200C22D54 /* Event.swift in Sources */,
 				160DA8901F636EEE00A84312 /* MarvelProvider.swift in Sources */,
 				165036151F62C272007CA247 /* HeroDAO.swift in Sources */,
 				16A375BB1F60D09C00C22D54 /* Comic.swift in Sources */,
+				16086BA81F65CDE20023A3DE /* EventDAO.swift in Sources */,
 				16ED69051F60F4D800F946AE /* ListingHeroesController.swift in Sources */,
 				16A375C11F60D0BF00C22D54 /* Serie.swift in Sources */,
+				16086BAC1F65D07B0023A3DE /* SerieDAO.swift in Sources */,
 				16A3757B1F60BD5700C22D54 /* AppDelegate.swift in Sources */,
 				16A375B71F60C9E200C22D54 /* MarvelResponse.swift in Sources */,
 				165036271F62E969007CA247 /* String+MD5.swift in Sources */,
-				16A375BD1F60D0A800C22D54 /* Storie.swift in Sources */,
+				16A375BD1F60D0A800C22D54 /* Story.swift in Sources */,
+				16086B941F65C08D0023A3DE /* DataAccessObject.swift in Sources */,
 				162E65181F60E6B600D52460 /* HeroCell.swift in Sources */,
+				160DA8A31F647B4700A84312 /* HeroDetailsViewController.swift in Sources */,
+				16086BA01F65CB2D0023A3DE /* ComicDAO.swift in Sources */,
 				16A375B91F60CB9D00C22D54 /* MarvelThumbnail.swift in Sources */,
 				16A375B51F60C9D500C22D54 /* Hero.swift in Sources */,
 			);
@@ -630,16 +670,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				165036201F62E6A7007CA247 /* Event.swift in Sources */,
-				1650361E1F62E6A4007CA247 /* Storie.swift in Sources */,
+				16086B851F65B90A0023A3DE /* MarvelList.swift in Sources */,
+				1650361E1F62E6A4007CA247 /* Story.swift in Sources */,
 				160DA8961F637C2300A84312 /* MarvelProvider.swift in Sources */,
 				16A375931F60BD5700C22D54 /* Marvel_HeroesTests.swift in Sources */,
 				1650361C1F62E6A1007CA247 /* Comic.swift in Sources */,
+				16086B951F65C0A40023A3DE /* DataAccessObject.swift in Sources */,
+				16086BA11F65CB310023A3DE /* ComicDAO.swift in Sources */,
 				1650361A1F62E696007CA247 /* MarvelThumbnail.swift in Sources */,
 				160DA89C1F640FB000A84312 /* HeroDAO.swift in Sources */,
 				165036221F62E6AA007CA247 /* Serie.swift in Sources */,
 				165036181F62E693007CA247 /* MarvelResponse.swift in Sources */,
+				16086BA91F65CEFB0023A3DE /* EventDAO.swift in Sources */,
+				16086BAD1F65D0880023A3DE /* SerieDAO.swift in Sources */,
 				165036281F633919007CA247 /* String+MD5.swift in Sources */,
 				16ED69021F60F42300F946AE /* MarvelAPI.swift in Sources */,
+				16086BA51F65CD1D0023A3DE /* StoryDAO.swift in Sources */,
 				160DA88D1F61FB2800A84312 /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,16 +695,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				165036211F62E6A7007CA247 /* Event.swift in Sources */,
-				1650361F1F62E6A4007CA247 /* Storie.swift in Sources */,
+				16086B861F65B90B0023A3DE /* MarvelList.swift in Sources */,
+				1650361F1F62E6A4007CA247 /* Story.swift in Sources */,
 				160DA8951F637C2300A84312 /* MarvelProvider.swift in Sources */,
 				16A3759E1F60BD5700C22D54 /* Marvel_HeroesUITests.swift in Sources */,
 				1650361D1F62E6A2007CA247 /* Comic.swift in Sources */,
+				16086B961F65C0A40023A3DE /* DataAccessObject.swift in Sources */,
+				16086BA21F65CB310023A3DE /* ComicDAO.swift in Sources */,
 				1650361B1F62E697007CA247 /* MarvelThumbnail.swift in Sources */,
 				160DA89D1F640FB100A84312 /* HeroDAO.swift in Sources */,
 				165036231F62E6AA007CA247 /* Serie.swift in Sources */,
 				165036191F62E693007CA247 /* MarvelResponse.swift in Sources */,
+				16086BAA1F65CEFB0023A3DE /* EventDAO.swift in Sources */,
+				16086BAE1F65D0890023A3DE /* SerieDAO.swift in Sources */,
 				165036291F63391A007CA247 /* String+MD5.swift in Sources */,
 				16ED69031F60F42400F946AE /* MarvelAPI.swift in Sources */,
+				16086BA61F65CD1D0023A3DE /* StoryDAO.swift in Sources */,
 				160DA88E1F61FB2900A84312 /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
