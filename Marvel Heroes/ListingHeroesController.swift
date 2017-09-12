@@ -36,7 +36,7 @@ class ListingHeroesController: UICollectionViewController {
     fileprivate var heroes = [Hero]()
     fileprivate var favoriteHeroes = [Hero]()
     
-    fileprivate let heroProvider = MarvelProvider<Marvel, Hero>()
+    fileprivate let heroProvider = MarvelProvider<Hero>()
     fileprivate let heroDAO = HeroDAO(with: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     
     fileprivate var displayMode: DisplayMode = .all
@@ -54,7 +54,8 @@ class ListingHeroesController: UICollectionViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let heroDetailsController = segue.destination as? HeroDetailsViewController {
+        if let navController = segue.destination as? UINavigationController, let heroDetailsController = navController.topViewController as? HeroDetailsViewController {
+            
             heroDetailsController.hero = sender as! Hero
             heroDetailsController.delegate = self
         }

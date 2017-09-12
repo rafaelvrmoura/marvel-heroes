@@ -9,15 +9,15 @@
 import Foundation
 import Moya
 
-class MarvelProvider<Target: TargetType, Model: JSONSerializable> {
+class MarvelProvider<Model: JSONSerializable> {
     
-    private var provider: MoyaProvider<Target>
+    private var provider: MoyaProvider<Marvel>
     
-    init(with provider: MoyaProvider<Target> = MoyaProvider<Target>()) {
+    init(with provider: MoyaProvider<Marvel> = MoyaProvider<Marvel>()) {
         self.provider = provider
     }
     
-    func request(target: Target, completionHandler: @escaping ([Model]?, MoyaError?)->()) {
+    func request(target: Marvel, completionHandler: @escaping ([Model]?, MoyaError?)->()) {
         
         provider.request(target) { (result) in
             

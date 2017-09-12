@@ -50,3 +50,23 @@ extension Hero: JSONSerializable {
         }
     }
 }
+
+
+struct CharacterSummary {
+    
+    var comicID: Int? {
+        guard let stringID = resourceURI?.components(separatedBy: "/").last else { return nil }
+        let id = Int(stringID)
+        return id
+    }
+    
+    var resourceURI: String?
+    var name: String?
+}
+
+extension CharacterSummary: JSONSerializable {
+    init(with json: [String : Any]) {
+        self.resourceURI = json["resourceURI"] as? String
+        self.name = json["name"] as? String
+    }
+}

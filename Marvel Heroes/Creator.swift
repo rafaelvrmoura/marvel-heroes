@@ -1,16 +1,16 @@
 //
-//  Serie.swift
+//  Creator.swift
 //  Marvel Heroes
 //
-//  Created by Rafael Moura on 06/09/17.
+//  Created by Rafael Moura on 12/09/17.
 //  Copyright © 2017 Rafael Moura. All rights reserved.
 //
 
 import Foundation
 
-struct SerieSummary {
+struct CreatorSummary {
     
-    var serieID: Int? {
+    var creatorID: Int? {
         guard let stringID = resourceURI?.components(separatedBy: "/").last else { return nil }
         let id = Int(stringID)
         return id
@@ -18,23 +18,13 @@ struct SerieSummary {
     
     var resourceURI: String?
     var name: String?
+    var role: String?
 }
 
-extension SerieSummary: JSONSerializable {
-    
+extension CreatorSummary: JSONSerializable {
     init(with json: [String : Any]) {
         self.resourceURI = json["resourceURI"] as? String
         self.name = json["name"] as? String
-    }
-}
-
-struct Serie {
-    // TODO: Add properties and methods
-}
-
-
-extension Serie: JSONSerializable {
-    init(with json: [String : Any]) {
-        // TODO: init implementation
+        self.role = json["role"] as? String
     }
 }

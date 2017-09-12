@@ -12,10 +12,10 @@ import Moya
 enum Marvel {
     
     case characters(limit: Int, offset: Int, name: String?, nameStartsWith: String?)
-    case comics(heroID: Int)
-    case series
-    case stories
-    case events
+    case comic(id: Int)
+    case serie(id: Int)
+    case story(id: Int)
+    case event(id: Int)
 }
 
 // MARK: - Marvel implementation for Moya's TargetType protocol
@@ -33,14 +33,14 @@ extension Marvel: TargetType {
         switch self {
         case .characters(_,_,_,_):
             return "/characters"
-        case .comics(let heroID):
-            return "/characters/\(heroID)/comics"
-        case .events:
-            return ""
-        case .series:
-            return ""
-        case .stories:
-            return ""
+        case .comic(let id):
+            return "/comics/\(id)"
+        case .event(let id):
+            return "/events/\(id)"
+        case .serie(let id):
+            return "/series/\(id)"
+        case .story(let id):
+            return "/stories/\(id)"
         }
     }
     
@@ -69,14 +69,14 @@ extension Marvel: TargetType {
             params["nameStartsWith"] = nameStartsWith
             
             return params
-        case .comics(_):
-            return nil
-        case .series:
-            return nil
-        case .events:
-            return nil
-        case .stories:
-            return nil
+        case .comic(_):
+            return params
+        case .serie:
+            return params
+        case .event:
+            return params
+        case .story:
+            return params
         }
     }
     

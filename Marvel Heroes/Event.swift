@@ -9,6 +9,13 @@
 import Foundation
 
 struct EventSummary {
+    
+    var eventID: Int? {
+        guard let stringID = resourceURI?.components(separatedBy: "/").last else { return nil }
+        let id = Int(stringID)
+        return id
+    }
+    
     var resourceURI: String?
     var name: String?
 }

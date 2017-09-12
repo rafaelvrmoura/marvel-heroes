@@ -67,6 +67,13 @@
 		16A375BD1F60D0A800C22D54 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BC1F60D0A800C22D54 /* Story.swift */; };
 		16A375BF1F60D0B200C22D54 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375BE1F60D0B200C22D54 /* Event.swift */; };
 		16A375C11F60D0BF00C22D54 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A375C01F60D0BF00C22D54 /* Serie.swift */; };
+		16E7675B1F6800E40001EF22 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E7675A1F6800E40001EF22 /* Creator.swift */; };
+		16E7675C1F6801600001EF22 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E7675A1F6800E40001EF22 /* Creator.swift */; };
+		16E7675D1F6801610001EF22 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E7675A1F6800E40001EF22 /* Creator.swift */; };
+		16E7675F1F68191B0001EF22 /* ComicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E7675E1F68191B0001EF22 /* ComicDetailsViewController.swift */; };
+		16E767611F68192A0001EF22 /* StoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E767601F68192A0001EF22 /* StoryDetailsViewController.swift */; };
+		16E767631F6819390001EF22 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E767621F6819390001EF22 /* EventDetailsViewController.swift */; };
+		16E767651F68194B0001EF22 /* SerieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E767641F68194B0001EF22 /* SerieDetailsViewController.swift */; };
 		16ED69021F60F42300F946AE /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65191F60EB3500D52460 /* MarvelAPI.swift */; };
 		16ED69031F60F42400F946AE /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65191F60EB3500D52460 /* MarvelAPI.swift */; };
 		16ED69051F60F4D800F946AE /* ListingHeroesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED69041F60F4D800F946AE /* ListingHeroesController.swift */; };
@@ -126,6 +133,11 @@
 		16A375BC1F60D0A800C22D54 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		16A375BE1F60D0B200C22D54 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		16A375C01F60D0BF00C22D54 /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
+		16E7675A1F6800E40001EF22 /* Creator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
+		16E7675E1F68191B0001EF22 /* ComicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailsViewController.swift; sourceTree = "<group>"; };
+		16E767601F68192A0001EF22 /* StoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryDetailsViewController.swift; sourceTree = "<group>"; };
+		16E767621F6819390001EF22 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		16E767641F68194B0001EF22 /* SerieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerieDetailsViewController.swift; sourceTree = "<group>"; };
 		16ED69041F60F4D800F946AE /* ListingHeroesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingHeroesController.swift; sourceTree = "<group>"; };
 		16ED69061F61BEC800F946AE /* Marvel Heroes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Marvel Heroes-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A0E0C948AF8334095B69CA0 /* Pods-Marvel HeroesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel HeroesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel HeroesUITests/Pods-Marvel HeroesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +278,7 @@
 				16A375BC1F60D0A800C22D54 /* Story.swift */,
 				16A375BE1F60D0B200C22D54 /* Event.swift */,
 				16A375C01F60D0BF00C22D54 /* Serie.swift */,
+				16E7675A1F6800E40001EF22 /* Creator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -293,6 +306,10 @@
 			children = (
 				16ED69041F60F4D800F946AE /* ListingHeroesController.swift */,
 				160DA8A21F647B4700A84312 /* HeroDetailsViewController.swift */,
+				16E7675E1F68191B0001EF22 /* ComicDetailsViewController.swift */,
+				16E767601F68192A0001EF22 /* StoryDetailsViewController.swift */,
+				16E767621F6819390001EF22 /* EventDetailsViewController.swift */,
+				16E767641F68194B0001EF22 /* SerieDetailsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -496,7 +513,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8637BF248BCEAB0AC806547D /* [CP] Copy Pods Resources */ = {
@@ -529,7 +546,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		AE695584EA7504BB82A45476 /* [CP] Embed Pods Frameworks */ = {
@@ -630,7 +647,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -642,25 +659,30 @@
 			files = (
 				162E651A1F60EB3500D52460 /* MarvelAPI.swift in Sources */,
 				16086B841F65B7230023A3DE /* MarvelList.swift in Sources */,
+				16E767631F6819390001EF22 /* EventDetailsViewController.swift in Sources */,
 				16086BA41F65CD1B0023A3DE /* StoryDAO.swift in Sources */,
 				16A375831F60BD5700C22D54 /* Marvel_Heroes.xcdatamodeld in Sources */,
 				16A375BF1F60D0B200C22D54 /* Event.swift in Sources */,
 				160DA8901F636EEE00A84312 /* MarvelProvider.swift in Sources */,
 				165036151F62C272007CA247 /* HeroDAO.swift in Sources */,
 				16A375BB1F60D09C00C22D54 /* Comic.swift in Sources */,
+				16E767611F68192A0001EF22 /* StoryDetailsViewController.swift in Sources */,
 				16086BA81F65CDE20023A3DE /* EventDAO.swift in Sources */,
 				16ED69051F60F4D800F946AE /* ListingHeroesController.swift in Sources */,
 				16A375C11F60D0BF00C22D54 /* Serie.swift in Sources */,
 				16086BAC1F65D07B0023A3DE /* SerieDAO.swift in Sources */,
 				16A3757B1F60BD5700C22D54 /* AppDelegate.swift in Sources */,
 				16A375B71F60C9E200C22D54 /* MarvelResponse.swift in Sources */,
+				16E7675F1F68191B0001EF22 /* ComicDetailsViewController.swift in Sources */,
 				165036271F62E969007CA247 /* String+MD5.swift in Sources */,
 				16A375BD1F60D0A800C22D54 /* Story.swift in Sources */,
 				16086B941F65C08D0023A3DE /* DataAccessObject.swift in Sources */,
+				16E767651F68194B0001EF22 /* SerieDetailsViewController.swift in Sources */,
 				162E65181F60E6B600D52460 /* HeroCell.swift in Sources */,
 				160DA8A31F647B4700A84312 /* HeroDetailsViewController.swift in Sources */,
 				16086BA01F65CB2D0023A3DE /* ComicDAO.swift in Sources */,
 				16A375B91F60CB9D00C22D54 /* MarvelThumbnail.swift in Sources */,
+				16E7675B1F6800E40001EF22 /* Creator.swift in Sources */,
 				16A375B51F60C9D500C22D54 /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,6 +709,7 @@
 				16ED69021F60F42300F946AE /* MarvelAPI.swift in Sources */,
 				16086BA51F65CD1D0023A3DE /* StoryDAO.swift in Sources */,
 				160DA88D1F61FB2800A84312 /* Hero.swift in Sources */,
+				16E7675C1F6801600001EF22 /* Creator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,6 +735,7 @@
 				16ED69031F60F42400F946AE /* MarvelAPI.swift in Sources */,
 				16086BA61F65CD1D0023A3DE /* StoryDAO.swift in Sources */,
 				160DA88E1F61FB2900A84312 /* Hero.swift in Sources */,
+				16E7675D1F6801610001EF22 /* Creator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

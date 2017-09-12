@@ -9,15 +9,16 @@
 import UIKit
 import Kingfisher
 
-enum Participation: String {
-    case comics = "Comics"
-    case stories = "Stories"
-    case events = "Events"
-    case series = "Series"
-}
 
 class HeroDetailsViewController: UIViewController {
 
+    fileprivate enum SectionType: String {
+        case comics = "Comics"
+        case stories = "Stories"
+        case events = "Events"
+        case series = "Series"
+    }
+    
     weak var delegate: HeroDetailsViewControllerDelegate?
     
     @IBOutlet weak var favoriteButton: UIButton!
@@ -25,7 +26,7 @@ class HeroDetailsViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var tableView: UITableView!
-    fileprivate var sectionsTypes = [Participation]()
+    fileprivate var sections = [SectionType]()
     
     var hero: Hero!
     
@@ -39,18 +40,26 @@ class HeroDetailsViewController: UIViewController {
         thumbnailView.kf.setImage(with: hero?.thumbnail?.url(with: .portraitXLarge))
         favoriteButton.setImage(try? heroDAO.isFavorite(hero) ? #imageLiteral(resourceName: "favorite") : #imageLiteral(resourceName: "non_favorite"), for: .normal)
         
-        setupSectionsTypes()
+        setupSections()
     }
     
-    private func setupSectionsTypes() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        if let comics = hero.comics, !comics.isEmpty { sectionsTypes.append(Participation.comics)}
+        if let selectedIndex = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectedIndex, animated: true)
+        }
+    }
+    
+    private func setupSections() {
         
-        if let stories = hero.stories, !stories.isEmpty { sectionsTypes.append(Participation.stories)}
+        if let comics = hero.comics, !comics.isEmpty { sections.append(SectionType.comics)}
         
-        if let events = hero.events, !events.isEmpty { sectionsTypes.append(Participation.events)}
+        if let stories = hero.stories, !stories.isEmpty { sections.append(SectionType.stories)}
         
-        if let series = hero.series, !series.isEmpty { sectionsTypes.append(Participation.series)}
+        if let events = hero.events, !events.isEmpty { sections.append(SectionType.events)}
+        
+        if let series = hero.series, !series.isEmpty { sections.append(SectionType.series)}
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,7 +67,7 @@ class HeroDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func dismiss(_ sender: UIButton) {
+    @IBAction func dismiss(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -67,29 +76,60 @@ class HeroDetailsViewController: UIViewController {
         sender.setImage(try? heroDAO.isFavorite(hero) ? #imageLiteral(resourceName: "favorite") : #imageLiteral(resourceName: "non_favorite") , for: .normal)
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if let comicDetailsController = segue.destination as? ComicDetailsViewController {
+            comicDetailsController.comicSummary = sender as! ComicSummary
+            
+        }else if let storyDetailsController = segue.destination as? StoryDetailsViewController {
+            storyDetailsController.storySummary = sender as! StorySummary
+            
+        }else if let eventDetailsController = segue.destination as? EventDetailsViewController {
+            eventDetailsController.eventSummary = sender as! EventSummary
+            
+        }else if let serieDetailsController = segue.destination as? SerieDetailsViewController {
+            serieDetailsController.serieSummary = sender as! SerieSummary
+        }
     }
-    */
+}
+
+// MARK: - TableView Delegate implementation
+
+extension HeroDetailsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let section = sections[indexPath.section]
+        switch section {
+        case .comics:
+            let comicSummary = hero.comics?[indexPath.row]
+            performSegue(withIdentifier: "comicDetails", sender: comicSummary)
+        case .events:
+            let eventSummary = hero.events?[indexPath.row]
+            performSegue(withIdentifier: "eventDetails", sender: eventSummary)
+        case .series:
+            let serieSummary = hero.series?[indexPath.row]
+            performSegue(withIdentifier: "serieDetails", sender: serieSummary)
+        case .stories:
+            let storySummary = hero.stories?[indexPath.row]
+            performSegue(withIdentifier: "storyDetails", sender: storySummary)
+        }
+    }
 }
 
 // MARK: - TableView DataSource implementation
 extension HeroDetailsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionsTypes.count
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let participation = sectionsTypes[section]
+        let sectionType = sections[section]
         
-        switch participation {
+        switch sectionType {
         case .comics:
             return hero.comics!.count <= 3 ? hero.comics!.count : 3
         case .events:
@@ -102,7 +142,7 @@ extension HeroDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionsTypes[section].rawValue
+        return sections[section].rawValue
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,9 +151,9 @@ extension HeroDetailsViewController: UITableViewDataSource {
         
         let text: String?
         
-        let participation = sectionsTypes[indexPath.section]
+        let sectionType = sections[indexPath.section]
         
-        switch participation {
+        switch sectionType {
         case .comics:
             text = hero.comics?[indexPath.row].name
         case .series:
