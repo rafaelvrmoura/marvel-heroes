@@ -55,7 +55,7 @@ class ListingHeroesController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let navController = segue.destination as? UINavigationController, let heroDetailsController = navController.topViewController as? HeroDetailsViewController {
-            
+            segue.destination.transitioningDelegate = self
             heroDetailsController.hero = sender as! Hero
             heroDetailsController.delegate = self
         }
@@ -242,5 +242,20 @@ extension ListingHeroesController: HeroDetailsViewControllerDelegate {
     }
 }
 
+// MARK: - TransitioningDeltegate stack
+
+extension ListingHeroesController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationController(with: 0.3, for: .dismissing, sender: nil)
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let selectedIndex = collectionView?.indexPathsForSelectedItems?.first
+        let cell = collectionView?.cellForItem(at: selectedIndex!)
+        
+        return AnimationController(with: 0.5, for: .presenting, sender: cell)
+    }
+}
 
 

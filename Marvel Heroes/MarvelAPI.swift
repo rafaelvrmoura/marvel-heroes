@@ -10,7 +10,6 @@ import Foundation
 import Moya
 
 enum Marvel {
-    
     case characters(limit: Int, offset: Int, name: String?, nameStartsWith: String?)
     case comic(id: Int)
     case serie(id: Int)

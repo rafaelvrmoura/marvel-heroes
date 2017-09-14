@@ -35,6 +35,7 @@
 		160DA89D1F640FB100A84312 /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036141F62C272007CA247 /* HeroDAO.swift */; };
 		160DA8A31F647B4700A84312 /* HeroDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160DA8A21F647B4700A84312 /* HeroDetailsViewController.swift */; };
 		162BD33D1F69A3DB00038889 /* Date+StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162BD33C1F69A3DB00038889 /* Date+StringRepresentation.swift */; };
+		162BD3411F6ABFB200038889 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162BD3401F6ABFB200038889 /* AnimationController.swift */; };
 		162E65181F60E6B600D52460 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65171F60E6B600D52460 /* HeroCell.swift */; };
 		162E651A1F60EB3500D52460 /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E65191F60EB3500D52460 /* MarvelAPI.swift */; };
 		165036151F62C272007CA247 /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165036141F62C272007CA247 /* HeroDAO.swift */; };
@@ -110,6 +111,7 @@
 		160DA88F1F636EEE00A84312 /* MarvelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelProvider.swift; sourceTree = "<group>"; };
 		160DA8A21F647B4700A84312 /* HeroDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewController.swift; sourceTree = "<group>"; };
 		162BD33C1F69A3DB00038889 /* Date+StringRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+StringRepresentation.swift"; sourceTree = "<group>"; };
+		162BD3401F6ABFB200038889 /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 		162E65171F60E6B600D52460 /* HeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
 		162E65191F60EB3500D52460 /* MarvelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		165036141F62C272007CA247 /* HeroDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
@@ -183,16 +185,33 @@
 		160DA88C1F61F2C300A84312 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				162BD33F1F6ABF8100038889 /* Animations */,
+				162BD33E1F6ABF6A00038889 /* Data Access */,
+				165036261F62E969007CA247 /* String+MD5.swift */,
+				162BD33C1F69A3DB00038889 /* Date+StringRepresentation.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		162BD33E1F6ABF6A00038889 /* Data Access */ = {
+			isa = PBXGroup;
+			children = (
 				16086B931F65C08D0023A3DE /* DataAccessObject.swift */,
 				165036141F62C272007CA247 /* HeroDAO.swift */,
 				16086B9F1F65CB2D0023A3DE /* ComicDAO.swift */,
 				16086BA31F65CD1B0023A3DE /* StoryDAO.swift */,
 				16086BA71F65CDE20023A3DE /* EventDAO.swift */,
 				16086BAB1F65D07B0023A3DE /* SerieDAO.swift */,
-				165036261F62E969007CA247 /* String+MD5.swift */,
-				162BD33C1F69A3DB00038889 /* Date+StringRepresentation.swift */,
 			);
-			name = Utils;
+			name = "Data Access";
+			sourceTree = "<group>";
+		};
+		162BD33F1F6ABF8100038889 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				162BD3401F6ABFB200038889 /* AnimationController.swift */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		16A3756E1F60BD5700C22D54 = {
@@ -668,6 +687,7 @@
 				16A375BF1F60D0B200C22D54 /* Event.swift in Sources */,
 				160DA8901F636EEE00A84312 /* MarvelProvider.swift in Sources */,
 				165036151F62C272007CA247 /* HeroDAO.swift in Sources */,
+				162BD3411F6ABFB200038889 /* AnimationController.swift in Sources */,
 				16A375BB1F60D09C00C22D54 /* Comic.swift in Sources */,
 				162BD33D1F69A3DB00038889 /* Date+StringRepresentation.swift in Sources */,
 				16E767611F68192A0001EF22 /* StoryDetailsViewController.swift in Sources */,
