@@ -35,6 +35,8 @@ class HeroDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableFooterView = UIView(frame: .zero)
+        
         nameLabel.text = hero?.name
         descriptionLabel.text = hero?.description ?? "No description was found for this character."
         thumbnailView.kf.setImage(with: hero?.thumbnail?.url(with: .portraitXLarge))

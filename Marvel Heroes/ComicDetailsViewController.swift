@@ -30,6 +30,8 @@ class ComicDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.tableFooterView = UIView(frame: .zero)
         loadComic()
     }
     

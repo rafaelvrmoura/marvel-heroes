@@ -34,6 +34,8 @@ class StoryDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.tableFooterView = UIView(frame: .zero)
         loadStory()
     }
     
