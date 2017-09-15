@@ -87,11 +87,15 @@ class HeroDAO: DataAccessObject {
         return result
     }
     
-    func fetch(from offset: Int, to limit: Int) throws -> [Hero]? {
+    func fetch(whereNameStartsWith characters: String? = nil, from offset: Int, to limit: Int) throws -> [Hero]? {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteHero")
         request.fetchOffset = offset
         request.fetchLimit = limit
+        
+        if let characters = characters {
+            request.predicate = NSPredicate(format: "(name BEGINSWITH[c] %@)", characters)
+        }
         
         let results = try context.fetch(request) as? [NSManagedObject]
         

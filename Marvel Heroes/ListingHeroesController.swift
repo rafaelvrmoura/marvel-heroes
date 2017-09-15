@@ -27,7 +27,7 @@ enum DisplayMode: String {
 
 class ListingHeroesController: UICollectionViewController {
 
-    
+    fileprivate let PAGE_LIMIT = 20
     fileprivate let favoriteImage = #imageLiteral(resourceName: "favorite")
     fileprivate let nonFavoriteImage = #imageLiteral(resourceName: "non_favorite")
     fileprivate var isLoading = false
@@ -35,6 +35,9 @@ class ListingHeroesController: UICollectionViewController {
     
     fileprivate var heroes = [Hero]()
     fileprivate var favoriteHeroes = [Hero]()
+    fileprivate var searchDataSource = [Hero]()
+    
+    fileprivate var searchText: String?
     
     fileprivate let heroProvider = MarvelProvider<Hero>()
     fileprivate let heroDAO = HeroDAO(with: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -51,7 +54,7 @@ class ListingHeroesController: UICollectionViewController {
     }
 
     
-    // MARK: - Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let navController = segue.destination as? UINavigationController, let heroDetailsController = navController.topViewController as? HeroDetailsViewController {
@@ -62,7 +65,7 @@ class ListingHeroesController: UICollectionViewController {
     }
  
 
-    // MARK: - Actions
+    // MARK: Actions
     
     @IBAction func toggleDisplayingPrefferences(_ sender: UIBarButtonItem) {
         
@@ -105,13 +108,13 @@ class ListingHeroesController: UICollectionViewController {
         }
     }
     
-    // MARK: - API Fetches stack 
-    fileprivate func loadHeroes(from offset: Int, limit: Int) {
+    // MARK: API Fetches stack
+    fileprivate func loadHeroesWhere(nameStartsWith characters: String? = nil, from offset: Int, limit: Int) {
         
         guard !isLoading else { return }
         
         isLoading = true
-        heroProvider.request(target: .characters(limit: limit, offset: offset, name: nil, nameStartsWith: nil)) { (heroes, error) in
+        heroProvider.request(target: .characters(limit: limit, offset: offset, name: nil, nameStartsWith: characters)) { (heroes, error) in
             
             self.isLoading = false
             if let heroes = heroes, heroes.count > 0, error == nil {
@@ -120,9 +123,9 @@ class ListingHeroesController: UICollectionViewController {
         }
     }
     
-    fileprivate func fetchFavoriteHeroes(from offset: Int, limit: Int) {
+    fileprivate func fetchFavoriteHeroesWhere(nameStartsWith characters: String? = nil, from offset: Int, limit: Int) {
 
-        guard let fetchResults = try? heroDAO.fetch(from: offset, to: limit), let favorites = fetchResults else { return }
+        guard let fetchResults = try? heroDAO.fetch(whereNameStartsWith: characters, from: offset, to: limit), let favorites = fetchResults else { return }
         self.insertCollectionViewItems(for: favorites)
     }
     
@@ -160,7 +163,7 @@ class ListingHeroesController: UICollectionViewController {
         collectionView?.insertItems(at: newIndexPaths)
     }
     
-    // MARK: - UICollectionViewDelegate
+    // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let hero = self.hero(at: indexPath.item)
@@ -210,14 +213,62 @@ extension ListingHeroesController {
             
             switch displayMode {
             case .all:
-                loadHeroes(from: heroes.count, limit: 20)
+                loadHeroesWhere(nameStartsWith: searchText, from: heroes.count, limit: PAGE_LIMIT)
             case .favorites:
-                fetchFavoriteHeroes(from: favoriteHeroes.count, limit: 20)
+                fetchFavoriteHeroesWhere(nameStartsWith: searchText, from: favoriteHeroes.count, limit: PAGE_LIMIT)
             }
             return loadingIndicatorView
+            
+        } else if kind == UICollectionElementKindSectionHeader {
+            let searchBarView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchBarView", for: indexPath)
+            (searchBarView.subviews.first as! UISearchBar).text = searchText
+            return searchBarView
         }
         
         return UICollectionReusableView(frame: .zero)
+    }
+}
+
+// MARK: - SearchBar Delegate implementation
+
+extension ListingHeroesController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        search(with: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        search(with: searchBar.text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
+        search(with: searchBar.text)
+    }
+    
+    private func search(with text: String?) {
+        self.searchText = text!.isEmpty ? nil : text
+        switch displayMode {
+        case .all:
+            let indexPaths = (0..<heroes.count).map{IndexPath(item: $0, section: 0)}
+            heroes.removeAll()
+            collectionView?.deleteItems(at: indexPaths)
+            loadHeroesWhere(nameStartsWith: text, from: heroes.count, limit: PAGE_LIMIT)
+            
+        case .favorites:
+            let indexPaths = (0..<favoriteHeroes.count).map{IndexPath(item: $0, section: 0)}
+            favoriteHeroes.removeAll()
+            collectionView?.deleteItems(at: indexPaths)
+            fetchFavoriteHeroesWhere(nameStartsWith: searchText, from: favoriteHeroes.count, limit: PAGE_LIMIT)
+        }
     }
 }
 
