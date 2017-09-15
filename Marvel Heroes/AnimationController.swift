@@ -49,6 +49,7 @@ class AnimationController: NSObject, UIViewControllerAnimatedTransitioning {
         
         destinationController?.view.alpha = 0.0
         containerView.addSubview(destinationController!.view)
+        destinationController?.view.layoutIfNeeded()
         
         let heroCell = self.sender as? HeroCell
         let cellThumbnailView = heroCell!.heroThumbnailView
@@ -69,10 +70,12 @@ class AnimationController: NSObject, UIViewControllerAnimatedTransitioning {
         
         let scaleX = detailsThumbnailView!.frame.width/animatedThumbnail.frame.width
         let scaleY = detailsThumbnailView!.frame.height/animatedThumbnail.frame.height
+        let destinationCenter = containerView.convert(detailsThumbnailView!.center, from: detailsThumbnailView!.superview)
+        
         let thumbnailAnimator = UIViewPropertyAnimator(duration: self.duration, curve: .easeOut) {
             
+            animatedThumbnail.center = destinationCenter
             animatedThumbnail.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
-            animatedThumbnail.center = containerView.convert(detailsThumbnailView!.center, from: detailsThumbnailView!.superview)
             sourceView?.alpha = 0.0
         }
         
