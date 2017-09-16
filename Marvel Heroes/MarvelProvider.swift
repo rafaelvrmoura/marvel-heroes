@@ -17,7 +17,7 @@ class MarvelProvider<Model: JSONSerializable> {
         self.provider = provider
     }
     
-    func request(target: Marvel, completionHandler: @escaping ([Model]?, MoyaError?)->()) {
+    func request(target: Marvel, completionHandler: @escaping ([Model]?, MarvelError?)->()) {
         
         provider.request(target) { (result) in
             
@@ -40,12 +40,13 @@ class MarvelProvider<Model: JSONSerializable> {
                     completionHandler(results, nil)
                     
                 } catch {
-                    completionHandler(nil, MoyaError.underlying(error))
+                    completionHandler(nil, MarvelError.underlying(error))
                 }
                 
             case .failure(let error):
-                // TODO: Handle the error
-                completionHandler(nil, error)
+                
+                let marvelError = MarvelError(with: error)
+                completionHandler(nil, marvelError)
             }
         }
     }
