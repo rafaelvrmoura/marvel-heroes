@@ -14,4 +14,10 @@ This file must have two elements in the root dictionary:
   
 If you don't have these credentials yet, please access [Marvel API](https://developer.marvel.com) and request one. 
   
+## Dependences
+
+* RxSwift
+* RxCocoa
+* Moya
+* Kingfisher
   
