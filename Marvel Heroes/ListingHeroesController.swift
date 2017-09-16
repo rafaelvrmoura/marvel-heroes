@@ -312,14 +312,13 @@ extension ListingHeroesController: UISearchBarDelegate {
         case .favorites:
             let indexPaths = (0..<favoriteHeroes.count).map{IndexPath(item: $0, section: 0)}
             favoriteHeroes.removeAll()
-            
+            heroes.removeAll()
             collectionView?.performBatchUpdates({
                 self.collectionView?.deleteItems(at: indexPaths)
             }, completion: { _ in
                 completion()
                 self.fetchFavoriteHeroesWhere(nameStartsWith: self.searchText, from: self.favoriteHeroes.count, limit: self.PAGE_LIMIT)
             })
-            
         }
     }
 }

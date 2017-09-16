@@ -121,7 +121,29 @@ extension Marvel: TargetType {
     }
     
     var sampleData: Data {
-        return Data() // Mocked data that will be used for testing
+        
+        switch self {
+        case .characters(_,_,_,_):
+            
+            let dataURL = Bundle.main.url(forResource: "Characters", withExtension: "json")
+            return try! Data(contentsOf: dataURL!)
+            
+        case .comic(_):
+            let dataURL = Bundle.main.url(forResource: "Comic", withExtension: "json")
+            return try! Data(contentsOf: dataURL!)
+            
+        case .event(_):
+            let dataURL = Bundle.main.url(forResource: "Event", withExtension: "json")
+            return try! Data(contentsOf: dataURL!)
+            
+        case .serie(_):
+            let dataURL = Bundle.main.url(forResource: "Serie", withExtension: "json")
+            return try! Data(contentsOf: dataURL!)
+            
+        case .story(_):
+            let dataURL = Bundle.main.url(forResource: "Story", withExtension: "json")
+            return try! Data(contentsOf: dataURL!)
+        }
     }
     
     var task: Task {

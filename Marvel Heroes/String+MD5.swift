@@ -11,7 +11,7 @@ import Foundation
 // MARK: - String MD5 extension
 extension String {
     
-    var md5: (String?) {
+    var md5: String? {
         let stringData = self.data(using: .utf8)
         
         var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
