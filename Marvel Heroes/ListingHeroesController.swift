@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Moya
 import Kingfisher
-import CoreData
+import RxSwift
+import RxCocoa
 
 enum DisplayMode: String {
     case all = "All"
@@ -38,6 +38,7 @@ class ListingHeroesController: UICollectionViewController {
     fileprivate var searchDataSource = [Hero]()
     
     fileprivate var searchText: String?
+    fileprivate var disposeBag = DisposeBag()
     
     fileprivate let heroProvider = MarvelProvider<Hero>()
     fileprivate let heroDAO = HeroDAO(with: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -221,7 +222,20 @@ extension ListingHeroesController {
             
         } else if kind == UICollectionElementKindSectionHeader {
             let searchBarView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchBarView", for: indexPath)
-            (searchBarView.subviews.first as! UISearchBar).text = searchText
+            let searchBar = searchBarView.subviews.first as! UISearchBar
+            searchBar.text = searchText
+            
+            searchBar.rx.text.orEmpty
+                .changed
+                .asObservable()
+                .throttle(0.3, scheduler: MainScheduler.instance)
+                .subscribe { event in
+                    self.search(with: event.element ?? "", completion: {
+                        searchBar.becomeFirstResponder()
+                    })
+                }
+                .disposed(by: disposeBag)
+            
             return searchBarView
         }
         
@@ -237,37 +251,50 @@ extension ListingHeroesController: UISearchBarDelegate {
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        search(with: searchText)
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.resignFirstResponder()
-        search(with: searchBar.text)
+        search(with: searchBar.text ?? "", completion: {
+            searchBar.resignFirstResponder()
+        })
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.resignFirstResponder()
         searchBar.text = nil
-        search(with: searchBar.text)
+        search(with: searchBar.text ?? "") {
+            searchBar.resignFirstResponder()
+        }
     }
     
-    private func search(with text: String?) {
-        self.searchText = text!.isEmpty ? nil : text
+    fileprivate func search(with text: String, completion: @escaping ()->()) {
+        
+        self.searchText = text.isEmpty ? nil : text
+        
         switch displayMode {
         case .all:
             let indexPaths = (0..<heroes.count).map{IndexPath(item: $0, section: 0)}
             heroes.removeAll()
-            collectionView?.deleteItems(at: indexPaths)
-            loadHeroesWhere(nameStartsWith: text, from: heroes.count, limit: PAGE_LIMIT)
+            
+            collectionView?.performBatchUpdates({
+                self.collectionView?.deleteItems(at: indexPaths)
+            },  completion: { _ in
+                completion()
+                self.loadHeroesWhere(nameStartsWith: self.searchText, from: self.heroes.count, limit: self.PAGE_LIMIT)
+            })
+            
             
         case .favorites:
             let indexPaths = (0..<favoriteHeroes.count).map{IndexPath(item: $0, section: 0)}
             favoriteHeroes.removeAll()
-            collectionView?.deleteItems(at: indexPaths)
-            fetchFavoriteHeroesWhere(nameStartsWith: searchText, from: favoriteHeroes.count, limit: PAGE_LIMIT)
+            
+            collectionView?.performBatchUpdates({
+                self.collectionView?.deleteItems(at: indexPaths)
+            }, completion: { _ in
+                completion()
+                self.fetchFavoriteHeroesWhere(nameStartsWith: self.searchText, from: self.favoriteHeroes.count, limit: self.PAGE_LIMIT)
+            })
+            
         }
     }
 }

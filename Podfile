@@ -8,6 +8,8 @@ target 'Marvel Heroes' do
   # Pods for Marvel Heroes
   pod 'Moya', '~> 8.0'
   pod 'Kingfisher'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'Marvel HeroesTests' do
     inherit! :search_paths
