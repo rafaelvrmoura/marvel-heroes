@@ -42,6 +42,7 @@ class ListingHeroesController: UICollectionViewController {
     
     fileprivate let heroProvider = MarvelProvider<Hero>()
     fileprivate let heroDAO = HeroDAO(with: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+    fileprivate var moreRecordsComing = true
     
     fileprivate var displayMode: DisplayMode = .all
     
@@ -71,6 +72,7 @@ class ListingHeroesController: UICollectionViewController {
     @IBAction func toggleDisplayingPrefferences(_ sender: UIBarButtonItem) {
         
         self.displayMode.toggle()
+        moreRecordsComing = true
         
         switch displayMode {
         case .all:
@@ -120,13 +122,21 @@ class ListingHeroesController: UICollectionViewController {
             self.isLoading = false
             if let heroes = heroes, heroes.count > 0, error == nil {
                 self.insertCollectionViewItems(for: heroes)
+                
+            }else {
+                self.moreRecordsComing = false
+                self.collectionView?.collectionViewLayout.invalidateLayout()
             }
         }
     }
     
     fileprivate func fetchFavoriteHeroesWhere(nameStartsWith characters: String? = nil, from offset: Int, limit: Int) {
 
-        guard let fetchResults = try? heroDAO.fetch(whereNameStartsWith: characters, from: offset, to: limit), let favorites = fetchResults else { return }
+        guard let fetchResults = try? heroDAO.fetch(whereNameStartsWith: characters, from: offset, to: limit), let favorites = fetchResults, !favorites.isEmpty else {
+            self.moreRecordsComing = false
+            self.collectionView?.collectionViewLayout.invalidateLayout()
+            return
+        }
         self.insertCollectionViewItems(for: favorites)
     }
     
@@ -172,6 +182,20 @@ class ListingHeroesController: UICollectionViewController {
     }
 }
 
+// MARK: - FlowLayout Delegate
+
+extension ListingHeroesController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        if moreRecordsComing {
+            return CGSize(width: collectionView.frame.width, height: 44.0)
+        }else{
+            return .zero
+        }
+    }
+}
+
 // MARK: - UICollectionViewDataSource
 extension ListingHeroesController {
     
@@ -211,6 +235,7 @@ extension ListingHeroesController {
         
         if kind == UICollectionElementKindSectionFooter {
             let loadingIndicatorView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LoadingIndicatorView", for: indexPath)
+            loadingIndicatorView.subviews.first?.isHidden = false
             
             switch displayMode {
             case .all:
