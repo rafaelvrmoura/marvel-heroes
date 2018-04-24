@@ -4,7 +4,7 @@ This project is an iOS app that consumes Marvel API using Moya framework.
 
 ## Instructions
   To consme Marvel API you must have both private and public keys. 
-  This project expects that you to create an `APIKeys.plis` file into app's bundle.
+  This project expects that you to create an `APIKeys.plist` file into app's bundle.
 
 This file must have two elements in the root dictionary: 
 
